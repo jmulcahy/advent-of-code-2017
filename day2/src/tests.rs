@@ -27,7 +27,7 @@ use process_line2;
 #[test]
 fn test_process_line2() {
     let data = vec![5, 9, 2, 8];
-    assert_eq!(4, process_line2(data.as_slice()).unwrap());
+    assert_eq!(Ok(4), process_line2(data.as_slice()));
 }
 
 #[test]
@@ -42,5 +42,5 @@ fn test_process2() {
     let data = vec![vec![5, 9, 2, 8],
                     vec![9, 4, 7, 3],
                     vec![3, 8, 6, 5]];
-    assert_eq!(9, process2(data.as_slice()).unwrap());
+    assert_eq!(Ok(9), process2(data.as_slice()));
 }
