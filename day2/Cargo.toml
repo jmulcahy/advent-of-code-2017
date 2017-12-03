@@ -7,3 +7,6 @@ authors = ["John Mulcahy <sansque@gmail.com>"]
 
 [[bin]]
 name = "one"
+
+[[bin]]
+name = "two"

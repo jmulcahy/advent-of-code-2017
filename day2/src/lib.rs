@@ -22,22 +22,22 @@ pub fn process1(data: &[Vec<i32>]) -> i32 {
         .sum()
 }
 
-fn process_line2(line: &[i32]) -> Option<i32> {
+fn process_line2(line: &[i32]) -> Result<i32, &'static str> {
     for x in line.iter() {
         for y in line.iter() {
             if x != y && x % y == 0 {
-                return Some(x / y);
+                return Ok(x / y);
             }
         }
     }
-    None
+    Err("Row missing divisible values")
 }
 
-pub fn process2(data: &[Vec<i32>]) -> Option<i32> {
+pub fn process2(data: &[Vec<i32>]) -> Result<i32, &'static str> {
     data.iter()
         .map(|xs| process_line2(xs.as_slice()))
-        .collect::<Option<Vec<i32>>>()
-        .and_then(|xs| Some(xs.iter().sum()))
+        .collect::<Result<Vec<i32>, &'static str>>()
+        .and_then(|xs| Ok(xs.iter().sum()))
 }
 
 #[cfg(test)]

@@ -33,5 +33,14 @@ fn test_process_line2() {
 #[test]
 fn test_error_process_line2() {
     let data = vec![1, 1];
-    assert_eq!(true, process_line2(data.as_slice()).is_none());
+    assert_eq!(true, process_line2(data.as_slice()).is_err());
+}
+
+use process2;
+#[test]
+fn test_process2() {
+    let data = vec![vec![5, 9, 2, 8],
+                    vec![9, 4, 7, 3],
+                    vec![3, 8, 6, 5]];
+    assert_eq!(9, process2(data.as_slice()).unwrap());
 }
