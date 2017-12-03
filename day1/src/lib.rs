@@ -20,6 +20,19 @@ pub fn process1(data: &[u32]) -> u32 {
     acc
 }
 
+pub fn process2(data: &[u32]) -> u32 {
+    let mut acc = 0;
+
+    for i in 0..data.len() - 1 {
+        let x1 = data[i];
+        let j = (i + data.len() / 2) % data.len();
+        let x2 = data[j];
+        if x1 == x2 {
+            acc += x1;
+        }
+    }
+    acc
+}
 
 #[cfg(test)]
 mod tests;

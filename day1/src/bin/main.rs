@@ -13,5 +13,6 @@ fn main() {
         Some(data) => data,
         _ => panic!("failed to parse input after reading"),
     };
-    println!("Result:\n{}", day1::process1(data.as_slice()));
+    println!("Result 1:\n{}", day1::process1(data.as_slice()));
+    println!("Result 2:\n{}", day1::process2(data.as_slice()));
 }
