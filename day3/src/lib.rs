@@ -1,4 +1,6 @@
-#[derive(Debug, PartialEq, Eq)]
+use std::collections::HashMap;
+
+#[derive(Debug, PartialEq, Eq, Hash, Clone, Copy)]
 struct Cart {
     x: i32,
     y: i32,
@@ -37,7 +39,6 @@ fn next_pos(pos: &Cart) -> Result<Cart, Cart> {
 }
 
 fn l1_norm(pos: &Cart) -> i32 {
-    println!("Coord: {:?}", pos);
     pos.x.abs() + pos.y.abs()
 }
 
@@ -49,8 +50,37 @@ pub fn spiral_distance(n: i32) -> i32 {
             Err(current) => panic!("Current pos: {:?}", current)
         };
     };
-    println!("{:?}", current);
     l1_norm(&current)
+}
+
+fn insert_on_board(board: &HashMap<Cart, i32>, pos: &Cart) -> i32 {
+    let mut acc = 0;
+    for i in -1..2 {
+        for j in -1..2 {
+            acc += match board.get(&Cart{x: pos.x + i, y: pos.y + j}) {
+                Some(&val) => val,
+                None => 0
+            };
+        };
+    };
+    acc
+}
+
+pub fn entry_less_than(n: i32) -> i32 {
+    let mut board = HashMap::new();
+    let mut current = Cart{x: 0, y: 0};
+    board.insert(current, 1i32);
+
+    let mut i = 0;
+    while i <= n {
+        current = match next_pos(&current) {
+            Ok(next) => next,
+            Err(current) => panic!("Current pos: {:?}", current)
+        };
+        i = insert_on_board(&mut board, &current);
+        board.insert(current, i);
+    }
+    i
 }
 
 #[cfg(test)]

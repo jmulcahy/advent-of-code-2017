@@ -109,3 +109,20 @@ fn test_spiral_distance1024() {
 fn test_spiral_distance() {
     assert_eq!(475, spiral_distance(277678));
 }
+
+use entry_less_than;
+
+#[test]
+fn test_part2_2() {
+    assert_eq!(2, entry_less_than(1));
+}
+
+#[test]
+fn test_part2_4() {
+    assert_eq!(5, entry_less_than(4));
+}
+
+#[test]
+fn test_part2_50() {
+    assert_eq!(54, entry_less_than(50));
+}
