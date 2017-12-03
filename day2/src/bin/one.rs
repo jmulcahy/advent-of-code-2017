@@ -9,6 +9,6 @@ fn main() {
         Ok(input) => input
     };
 
-    println!("Result:\n{}", day2::process(day2::parse_input(&input).as_slice()))
+    println!("Result:\n{}", day2::process1(day2::parse_input(&input).as_slice()))
 }
 

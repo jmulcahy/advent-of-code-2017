@@ -16,10 +16,28 @@ pub fn parse_input(input: &str) -> Vec<Vec<i32>> {
                       .collect()).collect()
 }
 
-pub fn process(data: &[Vec<i32>]) -> i32 {
+pub fn process1(data: &[Vec<i32>]) -> i32 {
     data.iter()
         .map(|xs| xs.iter().max().unwrap_or(&0) - xs.iter().min().unwrap_or(&0))
         .sum()
+}
+
+fn process_line2(line: &[i32]) -> Option<i32> {
+    for x in line.iter() {
+        for y in line.iter() {
+            if x != y && x % y == 0 {
+                return Some(x / y);
+            }
+        }
+    }
+    None
+}
+
+pub fn process2(data: &[Vec<i32>]) -> Option<i32> {
+    data.iter()
+        .map(|xs| process_line2(xs.as_slice()))
+        .collect::<Option<Vec<i32>>>()
+        .and_then(|xs| Some(xs.iter().sum()))
 }
 
 #[cfg(test)]
