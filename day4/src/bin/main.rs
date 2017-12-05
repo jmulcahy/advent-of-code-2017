@@ -10,5 +10,6 @@ fn main () {
         Ok(input) => input
     };
 
-    println!("Result:\n{}", day4::process(day4::parse_input(&input)));
+    println!("Result 1:\n{}", day4::process1(day4::parse_input(&input)));
+    println!("Result 2:\n{}", day4::process2(day4::parse_input(&input)));
 }
