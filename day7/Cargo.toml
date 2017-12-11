@@ -1,0 +1,11 @@
+[package]
+name = "day7"
+version = "0.1.0"
+authors = ["John Mulcahy <sansque@gmail.com>"]
+
+[dependencies]
+regex = "0.2"
+day2 = { path = "../day2" }
+
+[[bin]]
+name = "main"
